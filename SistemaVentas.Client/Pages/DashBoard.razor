@@ -1,0 +1,56 @@
+﻿@page "/page/dashboard"
+
+@inject IDashBoardService _dashboardServicio;
+@using ChartJs.Blazor.BarChart.Axes;
+@using ChartJs.Blazor.Common;
+@using ChartJs.Blazor.Common.Axes;
+@using ChartJs.Blazor.Common.Axes.Ticks;
+@using ChartJs.Blazor.BarChart;
+@using ChartJs.Blazor.Util;
+@using SistemaVentas.Client.Services
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-5">
+
+    <MudText Typo="Typo.h5" GutterBottom="true">DashBoard</MudText>
+
+    <MudPaper Elevation="3" Class="pa-4" Width="100%">
+
+        <MudGrid>
+            <MudItem xs="12" sm="6" md="4">
+                <MudPaper Elevation="25" Class="d-flex flex-row pt-6 pb-4" Style="height:100px;">
+                    <MudIcon Icon="@Icons.Material.Filled.Euro" Color="Color.Primary" Class="mx-4" Style="width:54px; height:54px;"></MudIcon>
+                    <div>
+                        <MudText Typo="Typo.subtitle1" Class="mud-text-secondary mb-n1">Total Ingresos</MudText>
+                        <MudText Typo="Typo.h5">@dashboard.TotalIngresos</MudText>
+                    </div>
+                </MudPaper>
+            </MudItem>
+            <MudItem xs="12" sm="6" md="4">
+                <MudPaper Elevation="25" Class="d-flex flex-row pt-6 pb-4" Style="height:100px;">
+                    <MudIcon Icon="@Icons.Material.Filled.LocalOffer" Color="Color.Secondary" Class="mx-4" Style="width:54px; height:54px;"></MudIcon>
+                    <div>
+                        <MudText Typo="Typo.subtitle1" Class="mud-text-secondary mb-n1">Total Ventas</MudText>
+                        <MudText Typo="Typo.h5">@dashboard.TotalVentas</MudText>
+                    </div>
+                </MudPaper>
+            </MudItem>
+            <MudItem xs="12" sm="6" md="4">
+                <MudPaper Elevation="25" Class="d-flex flex-row pt-6 pb-4" Style="height:100px;">
+                    <MudIcon Icon="@Icons.Material.Filled.Layers" Color="Color.Success" Class="mx-4" Style="width:54px; height:54px;"></MudIcon>
+                    <div>
+                        <MudText Typo="Typo.subtitle1" Class="mud-text-secondary mb-n1">Total Productos</MudText>
+                        <MudText Typo="Typo.h5">@dashboard.TotalProductos</MudText>
+                    </div>
+                </MudPaper>
+            </MudItem>
+            <MudItem xs="12" sm="12" md="12">
+                <MudPaper Elevation="25" Style="height:310px;">
+                    <ChartJs.Blazor.Chart Config="barconfig" @ref="_chart"></ChartJs.Blazor.Chart>
+                </MudPaper>
+            </MudItem>
+
+        </MudGrid>
+        
+    </MudPaper>
+
+</MudContainer>

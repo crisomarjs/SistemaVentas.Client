@@ -1,0 +1,40 @@
+﻿
+
+<MudDialog Style="width:400px">
+
+    <DialogContent>
+        <MudContainer Style="max-height: 400px; overflow-y: scroll" Class="m-0 p-0">
+
+            <EditForm Model="@_producto">
+
+                <MudTextField @bind-Value="@_producto.Nombre" Class="mb-3"
+                              Label="Nombre" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Badge" />
+
+
+                <MudSelect Label="Categoria" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" Class="mb-3"
+                           @bind-Value="categoriaSeleccionado">
+                    @if (listaCategoria.Any())
+                    {
+                        foreach (var rol in listaCategoria)
+                        {
+                            <MudSelectItem Value="@rol">@rol.Descripcion</MudSelectItem>
+                        }
+                    }
+                </MudSelect>
+
+                <MudNumericField @bind-Value="@_producto.Stock" Class="mb-3"
+                                 Label="Stock" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.QrCode" />
+
+                <MudNumericField @bind-Value="@_producto.Precio" Class="mb-3"
+                                 Label="Precio" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Money" />
+
+            </EditForm>
+
+        </MudContainer>
+
+    </DialogContent>
+    <DialogActions>
+        <MudButton Variant="Variant.Filled" Color="Color.Default" OnClick="Cancel">Cancelar</MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Guardar">Guardar</MudButton>
+    </DialogActions>
+</MudDialog>
